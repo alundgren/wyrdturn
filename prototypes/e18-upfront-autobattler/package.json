@@ -1,0 +1,22 @@
+{
+  "name": "e18-upfront-autobattler",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev --port 5198",
+    "build": "vp build",
+    "test": "vp test run",
+    "metrics": "node scripts/metrics.ts",
+    "shots": "vp build && node scripts/shots.ts"
+  },
+  "dependencies": {
+    "three": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/three": "catalog:",
+    "playwright-core": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}
