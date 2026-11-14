@@ -24,16 +24,16 @@ Exact pixel continuity does not guarantee that every mortar line or bone continu
 
 One generation attempt per texture; no generation retries. All eight outputs were resized to 1024 x 1024 by the reused read function before repair. Forge and moss received a hue-preserving RGB gain targeting mean luma 112/255 before border repair, because initial forge mean luma was 53.5 (wall) and 72.7 (floor), and moss was 85.1 (wall) and 74.6 (floor). Other materials were unchanged. This is a processing revision, not a generation retry.
 
-| Material | Mean luma /255 | Median luma /255 | Final edge max /255 (all maps) |
-| --- | ---: | ---: | ---: |
-| crypt/wall | 119.2 | 122.4 | 0 |
-| crypt/floor | 119.3 | 122.6 | 0 |
-| forge/wall | 110.9 | 114.4 | 0 |
-| forge/floor | 111.5 | 113.8 | 0 |
-| moss/wall | 111.5 | 111.9 | 0 |
-| moss/floor | 111.3 | 111.5 | 0 |
-| bone/wall | 109.6 | 109.0 | 0 |
-| bone/floor | 95.7 | 95.6 | 0 |
+| Material    | Mean luma /255 | Median luma /255 | Final edge max /255 (all maps) |
+| ----------- | -------------: | ---------------: | -----------------------------: |
+| crypt/wall  |          119.2 |            122.4 |                              0 |
+| crypt/floor |          119.3 |            122.6 |                              0 |
+| forge/wall  |          110.9 |            114.4 |                              0 |
+| forge/floor |          111.5 |            113.8 |                              0 |
+| moss/wall   |          111.5 |            111.9 |                              0 |
+| moss/floor  |          111.3 |            111.5 |                              0 |
+| bone/wall   |          109.6 |            109.0 |                              0 |
+| bone/floor  |           95.7 |             95.6 |                              0 |
 
 ## Visual review notes
 

@@ -1,10 +1,11 @@
 # E12 result: asset gate (research priority #2)
 
 `node scripts/gate.mjs --profile prop|monster|kit|tree file.glb ...`
-(run `npm run build` once first). No window opens: pictures come from
+(run `vp build` once first). No window opens: pictures come from
 headless Chromium.
 
 Per file:
+
 - Khronos glTF validator (errors fail the asset).
 - Stats: tris, verts, meshes, materials, texture sizes (read from the
   PNG/JPEG headers), skins, animations, bounds, file size.
@@ -25,13 +26,13 @@ skin weights, render failure, or more than 4x the triangle budget).
 
 ## Calibration run
 
-| File | Verdict | Why |
-| --- | --- | --- |
-| fixtures/broken-truncated.glb (kit.glb cut at 60 KB) | FAIL | unreadable, validator error |
-| polyfork ghoul (3.2k tris, rigged) | WARN | open edges/non-manifold: flat-shaded card parts, expected |
-| polyfork bone warrior (5k tris, rigged) | WARN | same |
-| our outdoor.glb (trees + fountain) | WARN | trees sink 13 cm below origin (root flare), card-like foliage edges |
-| our kit.glb (all pieces in one file) | WARN | whole library measured as one asset; gate per piece later |
+| File                                                 | Verdict | Why                                                                 |
+| ---------------------------------------------------- | ------- | ------------------------------------------------------------------- |
+| fixtures/broken-truncated.glb (kit.glb cut at 60 KB) | FAIL    | unreadable, validator error                                         |
+| polyfork ghoul (3.2k tris, rigged)                   | WARN    | open edges/non-manifold: flat-shaded card parts, expected           |
+| polyfork bone warrior (5k tris, rigged)              | WARN    | same                                                                |
+| our outdoor.glb (trees + fountain)                   | WARN    | trees sink 13 cm below origin (root flare), card-like foliage edges |
+| our kit.glb (all pieces in one file)                 | WARN    | whole library measured as one asset; gate per piece later           |
 
 Known limits: no deformation check over animation yet (research item:
 sample poses over time), no per-node gating for multi-piece libraries,
@@ -45,6 +46,7 @@ tris, 10-15 MB each, arbitrary scale. Gate verdict on a raw chest: FAIL
 (282k tris, origin off the floor, 692 non-manifold edges).
 
 What did NOT work (each caught by the gate's picture sheet):
+
 1. Blender collapse-decimate on the raw mesh: TRELLIS meshes are loose
    triangles, so the mesh tore apart (74% open edges).
 2. Weld first, then decimate: shape survives but the texture scrambles
@@ -53,22 +55,23 @@ What did NOT work (each caught by the gate's picture sheet):
    error limit (UV seams lock vertices).
 
 What works: `sh scripts/prep-all.sh`
+
 1. `scripts/prep.mjs` (glTF-Transform): same rotation/scale/floor offset
    for a full-res copy and a shape-only copy (UVs dropped, then weld +
    meshoptimizer simplify to the triangle target).
 2. `blender/bake_from_high.py` (headless): Smart-UV the low-poly, bake
    base colour from the high-poly (Cycles, selected-to-active), 1024 px.
-~3 s per asset. Results (all WARN, none FAIL; warnings are non-manifold
-edges, which are harmless for rendering):
+   ~3 s per asset. Results (all WARN, none FAIL; warnings are non-manifold
+   edges, which are harmless for rendering):
 
-| Asset | Tris | MB | Notes |
-| --- | --- | --- | --- |
-| chest / chest-px | 3.9k / 4.0k | 0.31 / 0.36 | default cleaner, Pixal3D needs +90 X |
-| bones, brazier, door, sconce | 3.0-5.2k | 0.28-0.34 | good at game distance |
-| ghoul / ghoul-px | 12.4k / 12.5k | 0.74 | Pixal3D clearly better face/anatomy |
-| skeleton | 12.1k | 0.84 | sword + shield read well |
-| spider | 11.7k | 0.78 | bristles become blobs; no rig |
-| oak, dead, cypress, shrub | 5-9.6k | 0.43-0.77 | dead tree and shrub best |
+| Asset                        | Tris          | MB          | Notes                                |
+| ---------------------------- | ------------- | ----------- | ------------------------------------ |
+| chest / chest-px             | 3.9k / 4.0k   | 0.31 / 0.36 | default cleaner, Pixal3D needs +90 X |
+| bones, brazier, door, sconce | 3.0-5.2k      | 0.28-0.34   | good at game distance                |
+| ghoul / ghoul-px             | 12.4k / 12.5k | 0.74        | Pixal3D clearly better face/anatomy  |
+| skeleton                     | 12.1k         | 0.84        | sword + shield read well             |
+| spider                       | 11.7k         | 0.78        | bristles become blobs; no rig        |
+| oak, dead, cypress, shrub    | 5-9.6k        | 0.43-0.77   | dead tree and shrub best             |
 
 Monsters are animated by an auto-rig in code (`e11-combat/src/autorig.js`):
 joints guessed from the mesh (height bands, extreme vertices for hands,
@@ -76,7 +79,7 @@ lowest vertices for feet), bones with identity rest rotation, weights by
 distance to bone segments (inverse 4th power, top 3, left/right masks).
 The existing procedural animations (idle/walk/attack/hit/death) then
 work unchanged. The spider gets whole-body motion only.
-Check: `cd ../e10-code-monsters && npm run build && Q=trellis node scripts/shots.mjs`.
+Check: `cd ../e10-code-monsters && vp build && Q=trellis node scripts/shots.mjs`.
 
 Verdict: TRELLIS + this pipeline gives clearly better-looking monsters
 and props than the code monsters, at ~4-12k tris and < 1 MB each, with

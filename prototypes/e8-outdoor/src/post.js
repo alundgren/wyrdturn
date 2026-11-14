@@ -1,15 +1,20 @@
-import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import * as THREE from "three";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { GTAOPass } from "three/addons/postprocessing/GTAOPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 
 // Kuwahara filter: flattens detail into brush-like patches. Cheap "painted" look.
 const Kuwahara = {
-  uniforms: { tDiffuse: { value: null }, resolution: { value: new THREE.Vector2() }, radius: { value: 3 } },
-  vertexShader: 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+  uniforms: {
+    tDiffuse: { value: null },
+    resolution: { value: new THREE.Vector2() },
+    radius: { value: 3 },
+  },
+  vertexShader:
+    "varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
   fragmentShader: `
     uniform sampler2D tDiffuse; uniform vec2 resolution; uniform int radius; varying vec2 vUv;
     void main(){
@@ -39,8 +44,14 @@ const Kuwahara = {
 
 // Colour grade: cold shadows, warm highlights, vignette, film grain.
 const Grade = {
-  uniforms: { tDiffuse: { value: null }, time: { value: 0 }, grain: { value: 0.025 }, vignette: { value: 0.8 } },
-  vertexShader: 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+  uniforms: {
+    tDiffuse: { value: null },
+    time: { value: 0 },
+    grain: { value: 0.025 },
+    vignette: { value: 0.8 },
+  },
+  vertexShader:
+    "varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
   fragmentShader: `
     uniform sampler2D tDiffuse; uniform float time; uniform float grain; uniform float vignette; varying vec2 vUv;
     float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233)) + time) * 43758.5453); }
@@ -69,7 +80,7 @@ export function makeComposer(renderer, scene, camera, look) {
   composer.addPass(gtao);
   composer.addPass(new UnrealBloomPass(size.clone(), 0.4, 0.5, 0.85));
   let kuwa = null;
-  if (look === 'painted') {
+  if (look === "painted") {
     kuwa = new ShaderPass(Kuwahara);
     kuwa.uniforms.resolution.value.copy(size);
     kuwa.uniforms.radius.value = 3;
@@ -79,11 +90,19 @@ export function makeComposer(renderer, scene, camera, look) {
   composer.addPass(grade);
   composer.addPass(new OutputPass());
   return {
-    gtao, grade,
-    render(t) { grade.uniforms.time.value = (t % 1000) / 1000; composer.render(); },
+    gtao,
+    grade,
+    render(t) {
+      grade.uniforms.time.value = (t % 1000) / 1000;
+      composer.render();
+    },
     setSize(w, h) {
       composer.setSize(w, h);
-      if (kuwa) kuwa.uniforms.resolution.value.set(w * renderer.getPixelRatio(), h * renderer.getPixelRatio());
+      if (kuwa)
+        kuwa.uniforms.resolution.value.set(
+          w * renderer.getPixelRatio(),
+          h * renderer.getPixelRatio(),
+        );
     },
   };
 }

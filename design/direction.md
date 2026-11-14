@@ -32,6 +32,13 @@ here; details and numbers stay in the prototype's `RESULT.md`.
 - Target: 60 fps at 1080p on an Apple-silicon MacBook Air. The playable
   slice runs at 60 fps there, with about 2× frame-time headroom on a
   generated floor (measured with the GPU bench in `prototypes/e11-combat`).
+- Toolchain: Vite+ (`vp`) with pnpm, Node.js 26 LTS, TypeScript for new
+  code.
+- Server (not built yet; needed for saved state and the game master's API
+  key): Node.js 26 with TypeScript, and SQLite through the built-in
+  `node:sqlite`. One runtime for the game tools, tests and server; Vite+
+  runs Vitest on Node. Bun was the alternative (fast, has its own SQLite)
+  but would mean two runtimes for no clear gain at this size.
 
 ## Assets
 
@@ -47,17 +54,17 @@ here; details and numbers stay in the prototype's `RESULT.md`.
 
 ## Prototype verdicts
 
-| Prototype | Question | Verdict |
-| --- | --- | --- |
-| e1 grid (Three.js, Godot) | Which engine? | Three.js, for headless agent checks |
-| e2 kit | Can scripts in Blender make clean, tiling level pieces? | Yes |
-| e3 lighting | How much mood comes from lighting? | Most of it; "moody" look picked, made brighter later |
-| e4 textures | Where do textures come from? | Image generation, processed to tile |
-| e8 outdoor | Can open-air spaces work? | Yes: sky, sun and moon, grass, trees, fountain |
-| e9 polyfork | What can borrowed rigged monsters teach us? | Procedural animation ideas; the files can't be redistributed |
-| e10 code monsters | Code-built monsters vs TRELLIS? | TRELLIS wins; code stays for variants |
-| e11 combat | Is the combat loop fun and checkable? | Playable Descent loop with bots and generators |
-| e12 asset gate | Can generated models become game-ready without a person? | Yes, about 3 s per model |
+| Prototype                 | Question                                                 | Verdict                                                      |
+| ------------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| e1 grid (Three.js, Godot) | Which engine?                                            | Three.js, for headless agent checks                          |
+| e2 kit                    | Can scripts in Blender make clean, tiling level pieces?  | Yes                                                          |
+| e3 lighting               | How much mood comes from lighting?                       | Most of it; "moody" look picked, made brighter later         |
+| e4 textures               | Where do textures come from?                             | Image generation, processed to tile                          |
+| e8 outdoor                | Can open-air spaces work?                                | Yes: sky, sun and moon, grass, trees, fountain               |
+| e9 polyfork               | What can borrowed rigged monsters teach us?              | Procedural animation ideas; the files can't be redistributed |
+| e10 code monsters         | Code-built monsters vs TRELLIS?                          | TRELLIS wins; code stays for variants                        |
+| e11 combat                | Is the combat loop fun and checkable?                    | Playable Descent loop with bots and generators               |
+| e12 asset gate            | Can generated models become game-ready without a person? | Yes, about 3 s per model                                     |
 
 ## Open questions
 

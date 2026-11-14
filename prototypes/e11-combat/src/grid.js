@@ -1,34 +1,32 @@
 // Pure grid logic. No three.js here, so it can be unit tested.
 export const DIRS = [
-  { name: 'N', dx: 0, dy: -1 },
-  { name: 'E', dx: 1, dy: 0 },
-  { name: 'S', dx: 0, dy: 1 },
-  { name: 'W', dx: -1, dy: 0 },
+  { name: "N", dx: 0, dy: -1 },
+  { name: "E", dx: 1, dy: 0 },
+  { name: "S", dx: 0, dy: 1 },
+  { name: "W", dx: -1, dy: 0 },
 ];
 
-const WALKABLE = new Set(['.', 'D', 'S', ',', 'K', 'L', 'H']);
+const WALKABLE = new Set([".", "D", "S", ",", "K", "L", "H"]);
 
 export function parseMap(text) {
   // Comment lines start with "# " (hash + space). Map rows are made of map chars only.
-  const mapRows = text
-    .split('\n')
-    .filter((l) => l.length > 0 && !l.startsWith('# '));
+  const mapRows = text.split("\n").filter((l) => l.length > 0 && !l.startsWith("# "));
   const height = mapRows.length;
   const width = Math.max(...mapRows.map((r) => r.length));
   let start = null;
   const tiles = mapRows.map((r, y) =>
     Array.from({ length: width }, (_, x) => {
-      const c = r[x] ?? ' ';
-      if (c === 'S') start = { x, y };
+      const c = r[x] ?? " ";
+      if (c === "S") start = { x, y };
       return c;
     }),
   );
-  if (!start) throw new Error('map has no S start tile');
+  if (!start) throw new Error("map has no S start tile");
   return { width, height, tiles, start };
 }
 
 export function tileAt(map, x, y) {
-  if (x < 0 || y < 0 || x >= map.width || y >= map.height) return ' ';
+  if (x < 0 || y < 0 || x >= map.width || y >= map.height) return " ";
   return map.tiles[y][x];
 }
 
@@ -43,14 +41,14 @@ export function createState(map) {
 // Returns { state, kind } where kind is 'move', 'turn' or 'bump'.
 export function applyAction(map, s, action) {
   const turn = { turnLeft: -1, turnRight: 1 }[action];
-  if (turn) return { state: { ...s, facing: (s.facing + turn + 4) % 4 }, kind: 'turn' };
+  if (turn) return { state: { ...s, facing: (s.facing + turn + 4) % 4 }, kind: "turn" };
   const rel = { forward: 0, strafeRight: 1, back: 2, strafeLeft: 3 }[action];
   if (rel === undefined) throw new Error(`unknown action ${action}`);
   const d = DIRS[(s.facing + rel) % 4];
   const nx = s.x + d.dx;
   const ny = s.y + d.dy;
-  if (!isWalkable(map, nx, ny)) return { state: s, kind: 'bump', dir: d };
-  return { state: { ...s, x: nx, y: ny }, kind: 'move' };
+  if (!isWalkable(map, nx, ny)) return { state: s, kind: "bump", dir: d };
+  return { state: { ...s, x: nx, y: ny }, kind: "move" };
 }
 
 // Wraps state with a one-slot input buffer. The renderer calls

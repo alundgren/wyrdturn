@@ -19,13 +19,13 @@ prototypes, research and design decisions.
 
 ## Play the slice
 
-Prerequisites: Node.js 22 or newer.
+Prerequisites: [Vite+](https://viteplus.dev/) (the `vp` command). It
+installs the pinned Node.js (26 LTS) and pnpm for you.
 
 ```sh
-cd prototypes
-npm install
-cd e11-combat
-npm run dev        # open the printed URL, press 1
+vp install
+cd prototypes/e11-combat
+vp dev             # open the printed URL, press 1
 ```
 
 W/A/S/D move, Q/E turn (turning is free), 1-4 skills, Space waits.
@@ -34,8 +34,7 @@ Red floor tiles show where an enemy will hit next.
 ## Check
 
 ```sh
-cd prototypes
-npm run check      # builds every prototype, unit tests, fast balance sims
+vp run validate    # format, lint, types, builds, unit tests, fast balance sims
 ```
 
 Browser-based checks (screenshots, visual diff, frame-time bench) are listed

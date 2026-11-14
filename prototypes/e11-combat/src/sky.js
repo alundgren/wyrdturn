@@ -1,26 +1,56 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 
 // Painted sky dome: gradient, sun/moon disc, drifting fbm clouds, stars.
 // One shader for all times of day so we can blend presets.
 export const PRESETS = {
   day: {
     sunDir: new THREE.Vector3(0.45, 0.75, 0.3).normalize(),
-    zenith: '#3f6aa8', horizon: '#c9cfc8', cloudLit: '#f2ebe0', cloudShade: '#7d8590',
-    sun: '#fff1d6', sunIntensity: 3.2, hemiSky: '#b8c8e0', hemiGround: '#6a5c44', hemi: 2.4,
-    fog: '#c8d0cc', fogDensity: 0.01, stars: 0, disc: 1,
+    zenith: "#3f6aa8",
+    horizon: "#c9cfc8",
+    cloudLit: "#f2ebe0",
+    cloudShade: "#7d8590",
+    sun: "#fff1d6",
+    sunIntensity: 3.2,
+    hemiSky: "#b8c8e0",
+    hemiGround: "#6a5c44",
+    hemi: 2.4,
+    fog: "#c8d0cc",
+    fogDensity: 0.01,
+    stars: 0,
+    disc: 1,
   },
   dusk: {
     sunDir: new THREE.Vector3(-0.8, 0.12, 0.35).normalize(),
-    zenith: '#232546', horizon: '#d9824a', cloudLit: '#f0a060', cloudShade: '#3a2f45',
-    sun: '#ff9a50', sunIntensity: 2.6, hemiSky: '#b090a0', hemiGround: '#5a4030', hemi: 2.2,
-    fog: '#b08070', fogDensity: 0.015, stars: 0.25, disc: 1,
+    zenith: "#232546",
+    horizon: "#d9824a",
+    cloudLit: "#f0a060",
+    cloudShade: "#3a2f45",
+    sun: "#ff9a50",
+    sunIntensity: 2.6,
+    hemiSky: "#b090a0",
+    hemiGround: "#5a4030",
+    hemi: 2.2,
+    fog: "#b08070",
+    fogDensity: 0.015,
+    stars: 0.25,
+    disc: 1,
   },
   night: {
     // "sun" is the moon here
     sunDir: new THREE.Vector3(0.3, 0.6, -0.55).normalize(),
-    zenith: '#04060e', horizon: '#141c2c', cloudLit: '#4a5468', cloudShade: '#0a0d16',
-    sun: '#9fb4ff', sunIntensity: 1.2, hemiSky: '#6070a0', hemiGround: '#28283a', hemi: 1.8,
-    fog: '#2c3650', fogDensity: 0.02, stars: 1, disc: 0.6,
+    zenith: "#04060e",
+    horizon: "#141c2c",
+    cloudLit: "#4a5468",
+    cloudShade: "#0a0d16",
+    sun: "#9fb4ff",
+    sunIntensity: 1.2,
+    hemiSky: "#6070a0",
+    hemiGround: "#28283a",
+    hemi: 1.8,
+    fog: "#2c3650",
+    fogDensity: 0.02,
+    stars: 1,
+    disc: 0.6,
   },
 };
 
@@ -73,26 +103,40 @@ const frag = /* glsl */ `
 
 export function makeSky() {
   const uniforms = {
-    zenith: { value: new THREE.Color() }, horizon: { value: new THREE.Color() },
-    cloudLit: { value: new THREE.Color() }, cloudShade: { value: new THREE.Color() },
-    sunCol: { value: new THREE.Color() }, sunDir: { value: new THREE.Vector3() },
-    time: { value: 0 }, stars: { value: 0 }, disc: { value: 1 },
+    zenith: { value: new THREE.Color() },
+    horizon: { value: new THREE.Color() },
+    cloudLit: { value: new THREE.Color() },
+    cloudShade: { value: new THREE.Color() },
+    sunCol: { value: new THREE.Color() },
+    sunDir: { value: new THREE.Vector3() },
+    time: { value: 0 },
+    stars: { value: 0 },
+    disc: { value: 1 },
   };
   const mesh = new THREE.Mesh(
     new THREE.SphereGeometry(400, 32, 16),
-    new THREE.ShaderMaterial({ uniforms, vertexShader: vert, fragmentShader: frag, side: THREE.BackSide, depthWrite: false, fog: false }),
+    new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader: vert,
+      fragmentShader: frag,
+      side: THREE.BackSide,
+      depthWrite: false,
+      fog: false,
+    }),
   );
   mesh.frustumCulled = false;
   mesh.renderOrder = -1;
   return {
     mesh,
     apply(p) {
-      for (const k of ['zenith', 'horizon', 'cloudLit', 'cloudShade']) uniforms[k].value.set(p[k]);
+      for (const k of ["zenith", "horizon", "cloudLit", "cloudShade"]) uniforms[k].value.set(p[k]);
       uniforms.sunCol.value.set(p.sun);
       uniforms.sunDir.value.copy(p.sunDir);
       uniforms.stars.value = p.stars;
       uniforms.disc.value = p.disc;
     },
-    update(t) { uniforms.time.value = t / 1000; },
+    update(t) {
+      uniforms.time.value = t / 1000;
+    },
   };
 }

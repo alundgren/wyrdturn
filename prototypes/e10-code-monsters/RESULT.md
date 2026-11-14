@@ -16,7 +16,7 @@ plan, polyfork-style, but with UVs so painted textures wrap the body.
 
 ## Agent self-check
 
-`npm run build && node scripts/shots.mjs` renders every monster alone
+`vp build && node scripts/shots.mjs` renders every monster alone
 from fixed cameras in each state (headless, no window) and writes
 `shots/sheet.png` (rows = monsters, columns = states) plus
 `shots/info.json` (tris, bones, page errors). This caught three bugs in
@@ -33,7 +33,7 @@ the ground on death, ghoul too thin.
   horns, skull helmets) as small rigid meshes on bones, sharper profile
   curves per ring (non-circular cross sections), and painted decals.
 
-Viewer: `npm run dev`, keys 1-5 states, N new seeds, `?arch=ghoul&count=4`.
+Viewer: `vp dev`, keys 1-5 states, N new seeds, `?arch=ghoul&count=4`.
 
 ## Update: quality pass (attachments, lumps, skeleton)
 

@@ -6,11 +6,11 @@ Run: 2026-11-13, Apple silicon MacBook Air. No commits. All experiment work is i
 
 **Painted-look ranking: A > B > C.** Use A3 as the visual direction for the dungeon, B as the dependable PBR baseline, and C for inexpensive masks and parameterised variations. This is a flat-albedo comparison, not an in-engine lighting or performance evaluation.
 
-| Method | What worked | Failure / practical consequence |
-| --- | --- | --- |
-| A: Codex image_gen | Strong painted chipped masonry, broad irregular flagstones, split vertical wood and convincingly oxidised iron. Production prompt (trial 3) is the most cohesive dark set. | Prompting tileability did not produce exact matching pixels. Mortar and wood details can terminate at a tile border. Edge correction removes colour jumps, not all structural errors. Albedo includes painted highlights and crevice shading; inferred normals are not measured geometry. |
-| B: Poly Haven + scripted paint-over | Reliable source PBR maps; wrap-aware Kuwahara filter simplifies small details; monastery floor has useful irregular slabs. | Castle wall retains a photographic scale and busy detail; metal retains too much yellow. Wood remains close to filtered photography. Stronger filtering trades readable wear for smearing. |
-| C: Blender nodes, emission bake | Very fast, deterministic, editable colour bands; rust mask and palette changes are inexpensive. | Flat colour bands look like camouflage rather than brushwork. Regular masonry/plank grid is obvious. Initial floor was wall bricks; changed to larger aligned slabs. Initial wood grain ran horizontally; corrected noise scaling. Floor still resembles regular tiles rather than convincingly worn flagstone. This is a failed art-direction candidate, preserved for comparison. |
+| Method                              | What worked                                                                                                                                                                | Failure / practical consequence                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A: Codex image_gen                  | Strong painted chipped masonry, broad irregular flagstones, split vertical wood and convincingly oxidised iron. Production prompt (trial 3) is the most cohesive dark set. | Prompting tileability did not produce exact matching pixels. Mortar and wood details can terminate at a tile border. Edge correction removes colour jumps, not all structural errors. Albedo includes painted highlights and crevice shading; inferred normals are not measured geometry.                                                                                           |
+| B: Poly Haven + scripted paint-over | Reliable source PBR maps; wrap-aware Kuwahara filter simplifies small details; monastery floor has useful irregular slabs.                                                 | Castle wall retains a photographic scale and busy detail; metal retains too much yellow. Wood remains close to filtered photography. Stronger filtering trades readable wear for smearing.                                                                                                                                                                                          |
+| C: Blender nodes, emission bake     | Very fast, deterministic, editable colour bands; rust mask and palette changes are inexpensive.                                                                            | Flat colour bands look like camouflage rather than brushwork. Regular masonry/plank grid is obvious. Initial floor was wall bricks; changed to larger aligned slabs. Initial wood grain ran horizontally; corrected noise scaling. Floor still resembles regular tiles rather than convincingly worn flagstone. This is a failed art-direction candidate, preserved for comparison. |
 
 A1 uses explicit grim game painting; A2 uses gouache; A3 uses production texture language. A2 is consistently softer and lighter, especially the floor. **No trial became cute or friendly**: this experiment does not reproduce that earlier concern. The negative constraints and concrete material descriptions were used together, so this run cannot establish which prevented it. Three samples per material are insufficient to estimate a general failure rate.
 
@@ -37,12 +37,12 @@ Pixel continuity is not proof of convincing repetition: the corrected C floor ha
 
 All B source assets are **CC0** according to [Poly Haven's asset licence](https://polyhaven.com/license), verified during this run. Attribution is optional; provenance is retained anyway. Manifest contains download URLs, API-provided MD5 hashes, asset IDs and licence URL per map. Licence applies to the assets, not the site's logos or example renders. No site example renders were used.
 
-| Material | Asset | Licence |
-| --- | --- | --- |
-| wall | [castle_brick_01](https://polyhaven.com/a/castle_brick_01) | CC0 |
-| floor | [monastery_stone_floor](https://polyhaven.com/a/monastery_stone_floor) | CC0 |
-| wood | [medieval_wood](https://polyhaven.com/a/medieval_wood) | CC0 |
-| iron | [rusty_metal_03](https://polyhaven.com/a/rusty_metal_03) | CC0 |
+| Material | Asset                                                                  | Licence |
+| -------- | ---------------------------------------------------------------------- | ------- |
+| wall     | [castle_brick_01](https://polyhaven.com/a/castle_brick_01)             | CC0     |
+| floor    | [monastery_stone_floor](https://polyhaven.com/a/monastery_stone_floor) | CC0     |
+| wood     | [medieval_wood](https://polyhaven.com/a/medieval_wood)                 | CC0     |
+| iron     | [rusty_metal_03](https://polyhaven.com/a/rusty_metal_03)               | CC0     |
 
 A is generated through the supplied Codex image_gen tool, not CC0 library content. No third-party texture image was supplied to the generator; named games were style references in text. This report does not independently establish copyright protection or exclusivity for generated output. C uses original procedural node definitions and no external image textures.
 
@@ -121,4 +121,3 @@ Traditional gouache material study digitised for a dark fantasy game. Layered op
 ### iron — trial 3
 
 Production game texture painted by an environment artist. Graphic chisel marks, deliberately simplified details, high contrast crevice accents, muted midtones, sparse worn highlights. Austere oppressive medieval horror. Subject: rusted iron plate, flaking dark oxide, orange-brown corrosion islands and hammered pits. Single square 1024x1024 seamless repeating material texture, orthographic straight-on surface filling every pixel. Opposite edges must match. Even diffuse illumination; no perspective, no cast shadows, no frame, text, objects, ornaments or vignette. Painted and stylised, not photographic, cute, friendly, polished or toy-like.
-

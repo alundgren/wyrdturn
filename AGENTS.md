@@ -28,11 +28,25 @@ folder holds the details and numbers, but the decision belongs in
 
 ## Checks
 
-- `npm run check` in `prototypes/` is the standard check. Run it before
-  every push. It needs no network and opens no windows.
+- `vp run validate` at the repo root is the standard check. Run it before
+  every push. It needs no network and opens no windows. `vp check --fix`
+  fixes formatting.
 - Browser checks use a headless browser and never open a window:
   `prototypes/README.md` lists them.
 - No CI. Checks run locally. GitHub Actions are only for releases.
+
+## Toolchain
+
+- [Vite+](https://viteplus.dev/) (`vp`) for everything: install, dev,
+  build, test (Vitest), lint (Oxlint), format (Oxfmt) and type checks.
+  Don't call npm, npx or the tools directly.
+- pnpm workspace at the repo root. Shared versions live in the `catalog`
+  in `pnpm-workspace.yaml`; packages refer to them as `"catalog:"`.
+- Node.js 26 LTS, pinned in `package.json` (`devEngines`).
+- New code is TypeScript. The finished prototypes stay JavaScript.
+- Use the latest stable release of every package, checked against the
+  registry, not from memory. pnpm holds back releases younger than its
+  minimum release age; don't add exceptions to get around that.
 
 ## Assets and size
 
