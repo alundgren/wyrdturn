@@ -349,7 +349,8 @@ No other combos in the first version (e13 and e14 found explosions easy to explo
 4. Ground ticks, effects fade, waves arrive in row 5 if due.
 5. Enemies announce new intents.
 
-Win: no enemies left and no waves to come. Loss: the hero dies, or round 12 ends.
+Win: no enemies left and no waves to come. Loss: the hero dies, or the round limit ends
+(12 here; the build uses 20).
 
 ### Fights
 
@@ -414,6 +415,30 @@ deal more than 60% of the hero's HP, or where two enemies share a cell.
 
 Also watch the opposite failure: if the strong bot wins everything and random wins a lot, the
 fights are too easy to tell anything apart; tune the generator until strong is near 85-90%.
+
+### What the build changed
+
+Bot runs in `prototypes/e16-depth-lanes` showed problems with some of the numbers above. The
+prototype changed them. Its `RESULT.md` has the numbers that came out.
+
+- **Hit-and-dodge was almost as good as the strong bot** (84% against 90% wins). A walker at
+  row 1 with an empty line cell in its lane now claws the line cell beside it (hero first),
+  and a ghoul at row 1 cleaves its line cell and both cells beside it. Stepping one lane away
+  is no longer a free dodge.
+- **Archers were easy to ignore, so blockers were worth less than Strike.** Arrows now aim at
+  the hero: they fly down the hero's lane and hit the first body there, so a Bone Servant in
+  front of the hero catches them. An archer whose arrow is blocked walks forward to row 3. At
+  row 1 it stabs for 2.
+- **Fire did half of all damage and a damage-only deck was as good as the full one.**
+  Firebolt reaches rows 1-4 only, a blaze deals 3 (not 4), and Strike deals 6.
+- **Fights ran out of time with full HP.** The round limit is 20 (not 12), and waves carry
+  the pressure.
+- **Summons cost 1** (not 2). Bone Servant has 12 HP and Bash deals 3.
+- **Wolf Bite** deals 4 to the first enemy in its lane, rows 1-2.
+- **Enemy damage:** ghoul 6, spearman 5, archer 4, spider 4, warden 5, priest 3 (lob that
+  alternates poison and fire on the hero's line cell). Priests back off from rows 1-3.
+- **Generator:** enemy cost per type (spider 2; ghoul, spearman, archer 3; priest 4; warden
+  5), budget 10 + 4 × difficulty, and enemies get +1 HP per difficulty step above 1.
 
 ### Deliverable
 
