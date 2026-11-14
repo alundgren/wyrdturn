@@ -66,7 +66,7 @@ here; details and numbers stay in the prototype's `RESULT.md`.
 | e11 combat                | Is the combat loop fun and checkable?                               | Playable Descent loop with bots and generators                                            |
 | e12 asset gate            | Can generated models become game-ready without a person?            | Yes, about 3 s per model                                                                  |
 | e13 board, e14 lanes      | Which combat view? ([combat-exploration.md](combat-exploration.md)) | Lanes (e14) are promising and need tuning; the board (e13) felt messy and tedious in play |
-| e15 hex autobattler       | Can an autobattler with card pauses keep the choices?               | Bots say cards, timing and the wolf matter, but placement barely does; not played yet     |
+| e15 hex autobattler       | Can an autobattler with card pauses keep the choices?               | Dropped: too messy in play (bots liked cards, timing and the wolf)                        |
 
 ## Open questions
 
@@ -74,8 +74,8 @@ here; details and numbers stay in the prototype's `RESULT.md`.
   view because fighting on the exploration grid turned into stepping back
   and hitting. First playtest: lanes (e14) are the lead candidate and need
   a lot of tuning; the board (e13) felt messy and tedious, so it's dropped
-  as it is. The hex autobattler (e15) is built and waits for a playtest;
-  bots say placement barely matters there yet. Research:
+  as it is. The hex autobattler (e15) felt too messy in play,
+  so it's dropped. Next: e16, first person with depth lanes. Research:
   [../research/combat-views.md](../research/combat-views.md) and
   [../research/autobattler-combat.md](../research/autobattler-combat.md).
 
