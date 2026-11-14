@@ -28,6 +28,8 @@ Tile size 2 m, wall height 3 m, eye height 1.6 m.
 | e10-code-monsters              | monsters generated in code, painted, animated                          |
 | e11-combat                     | the playable slice: rules, game, level, skill and encounter generators |
 | e12-asset-gate                 | GLB checker, simplify and bake for generated models, picture sheets    |
+| e13-board                      | combat on a tactics board made from the room the fight starts in       |
+| e14-lanes                      | Darkest Dungeon style side-view lane combat                            |
 
 ## Headless checks
 
