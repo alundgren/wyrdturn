@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hex autobattler</title>
+    <style>
+      :root {
+        --ink: #f4ead8;
+        --dim: #b8ab94;
+        --panel: rgba(24, 19, 15, 0.86);
+        --edge: #6a5a44;
+        --gold: #ffd65a;
+        --red: #ff5a48;
+        --green: #7dff9a;
+        --blue: #8fd0ff;
+        --fire: #ff8a3a;
+        --poison: #8ae05a;
+        --oil: #c0a070;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #120e0b;
+        overflow: hidden;
+        color: var(--ink);
+        font:
+          14px/1.3 "Trebuchet MS",
+          "Segoe UI",
+          sans-serif;
+        user-select: none;
+      }
+      canvas {
+        display: block;
+      }
+      .layer {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+      .ui {
+        pointer-events: auto;
+      }
+      #top {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        pointer-events: none;
+      }
+      #banner {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 6px #000;
+      }
+      #banner.enemy {
+        color: var(--red);
+      }
+      #sub {
+        color: var(--dim);
+        font-size: 13px;
+        text-shadow: 0 1px 3px #000;
+      }
+      #fightbar {
+        position: fixed;
+        top: 10px;
+        left: 12px;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      select,
+      button {
+        font: inherit;
+        color: var(--ink);
+        background: #3a2e22;
+        border: 1px solid var(--edge);
+        border-radius: 6px;
+        padding: 4px 8px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #4a3a2a;
+      }
+      #legend {
+        position: fixed;
+        top: 10px;
+        right: 12px;
+        background: var(--panel);
+        border: 1px solid var(--edge);
+        border-radius: 8px;
+        padding: 6px 10px;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+      .sw {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: -1px;
+      }
+      /* unit labels */
+      .ulabel {
+        position: absolute;
+        transform: translate(-50%, -100%);
+        text-align: center;
+        white-space: nowrap;
+        pointer-events: auto;
+        cursor: pointer;
+      }
+      .uname {
+        font-size: 12px;
+        font-weight: bold;
+        text-shadow:
+          0 1px 3px #000,
+          0 0 2px #000;
+      }
+      .ulabel.sel .uname {
+        color: var(--gold);
+      }
+      .hpbar {
+        position: relative;
+        width: 84px;
+        height: 12px;
+        margin: 2px auto 0;
+        background: #2a0e0c;
+        border: 1px solid #000;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .hpfill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        background: linear-gradient(#e85a48, #a8281c);
+      }
+      .P .hpfill {
+        background: linear-gradient(#78d860, #3a8a2a);
+      }
+      .hpghost {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: rgba(255, 240, 200, 0.75);
+      }
+      .hptxt {
+        position: absolute;
+        inset: 0;
+        font-size: 10px;
+        line-height: 12px;
+        font-weight: bold;
+        text-shadow:
+          0 0 2px #000,
+          0 0 2px #000;
+      }
+      .block {
+        display: inline-block;
+        margin-left: 4px;
+        padding: 0 4px;
+        border-radius: 3px;
+        background: #4a6a9a;
+        font-size: 11px;
+        font-weight: bold;
+      }
+      .tag {
+        display: inline-block;
+        margin: 1px 2px 0;
+        padding: 0 4px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: bold;
+        background: #333;
+      }
+      .ready {
+        color: #12202a;
+        background: var(--blue);
+      }
+      .intent {
+        display: inline-block;
+        margin-bottom: 4px;
+        padding: 3px 7px;
+        border-radius: 6px;
+        background: rgba(60, 14, 10, 0.92);
+        border: 1px solid #c8402e;
+        font-size: 12px;
+        font-weight: bold;
+        color: #ffe0d0;
+        box-shadow: 0 2px 6px #0008;
+      }
+      .intent.move,
+      .intent.ally {
+        background: rgba(30, 30, 40, 0.9);
+        border-color: #7a7a9a;
+        color: #d8d8f0;
+      }
+      .intent.fizzle {
+        background: rgba(40, 40, 40, 0.92);
+        border-color: #888;
+        color: #aaa;
+        text-decoration: line-through;
+      }
+      .intent .tgt {
+        color: var(--red);
+      }
+      /* slot labels on the floor */
+      .slabel {
+        position: absolute;
+        transform: translate(-50%, 0);
+        text-align: center;
+        white-space: nowrap;
+      }
+      .snum {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.55);
+        font-size: 11px;
+        font-weight: bold;
+        color: var(--dim);
+      }
+      .threat {
+        display: inline-block;
+        margin-left: 3px;
+        padding: 0 5px;
+        border-radius: 4px;
+        background: var(--red);
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        box-shadow: 0 0 8px #f00a;
+      }
+      .hz {
+        display: inline-block;
+        margin: 2px 1px 0;
+        padding: 0 4px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: bold;
+        color: #111;
+      }
+      .hz.fire {
+        background: var(--fire);
+      }
+      .hz.blaze {
+        background: #ff4a1a;
+        color: #fff;
+      }
+      .hz.oil {
+        background: var(--oil);
+      }
+      .hz.poison {
+        background: var(--poison);
+      }
+      .hz.ward {
+        background: var(--blue);
+      }
+      /* bottom: energy, hand, end turn */
+      #bottom {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 14px;
+      }
+      #energy {
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        background: radial-gradient(#ffe08a, #c8781c);
+        border: 3px solid #5a3a10;
+        color: #3a1c00;
+        font-size: 26px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      #energy small {
+        font-size: 10px;
+      }
+      #hand {
+        display: flex;
+        gap: 8px;
+        align-items: flex-end;
+      }
+      .card {
+        width: 128px;
+        height: 162px;
+        box-sizing: border-box;
+        padding: 6px 7px;
+        border-radius: 9px;
+        background: linear-gradient(#4a3c2c, #2a2018);
+        border: 2px solid #8a7050;
+        box-shadow: 0 4px 10px #000a;
+        cursor: pointer;
+        transition: transform 0.12s;
+        position: relative;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+      }
+      .card.sel {
+        transform: translateY(-18px);
+        border-color: var(--gold);
+        box-shadow: 0 0 16px #ffd65a88;
+      }
+      .card.off {
+        filter: grayscale(0.85) brightness(0.65);
+      }
+      .cost {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: radial-gradient(#ffe08a, #c8781c);
+        color: #3a1c00;
+        font-weight: bold;
+        text-align: center;
+        line-height: 26px;
+        border: 2px solid #5a3a10;
+      }
+      .cname {
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+        margin: 2px 0 4px 10px;
+      }
+      .ctext {
+        font-size: 11.5px;
+        color: #e8dcc4;
+      }
+      .why {
+        position: absolute;
+        bottom: 5px;
+        left: 6px;
+        right: 6px;
+        font-size: 10px;
+        color: #ff9a80;
+        text-align: center;
+      }
+      .lane {
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+        margin: 2px 0 5px;
+      }
+      .lane i {
+        width: 11px;
+        height: 11px;
+        border-radius: 2px;
+        background: #1a1410;
+        border: 1px solid #5a4a38;
+        position: relative;
+      }
+      .lane i.mid {
+        margin-left: 6px;
+      }
+      .lane i.from {
+        background: var(--gold);
+      }
+      .lane i.foe {
+        background: var(--red);
+      }
+      .lane i.ally {
+        background: var(--blue);
+      }
+      .lane i.here::after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #000;
+      }
+      #end {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 14px 18px;
+        margin-bottom: 10px;
+        background: linear-gradient(#8a3a22, #5a1e10);
+        border: 2px solid #c8603a;
+        border-radius: 10px;
+      }
+      #end:disabled {
+        opacity: 0.4;
+      }
+      /* side panels */
+      .panel {
+        position: fixed;
+        background: var(--panel);
+        border: 1px solid var(--edge);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 12.5px;
+        width: 250px;
+      }
+      #unitpanel {
+        left: 12px;
+        bottom: 190px;
+      }
+      #preview {
+        right: 12px;
+        bottom: 190px;
+        width: 290px;
+        max-height: 250px;
+        overflow: hidden;
+      }
+      .ph {
+        font-weight: bold;
+        color: var(--gold);
+        margin-bottom: 4px;
+        font-size: 13px;
+      }
+      .ev {
+        margin: 1px 0;
+      }
+      .ev.combo {
+        color: var(--fire);
+        font-weight: bold;
+      }
+      .ev.bad {
+        color: #ff9a80;
+      }
+      .ev.good {
+        color: #b0ffb0;
+      }
+      .ab {
+        margin-top: 6px;
+        padding: 5px 6px;
+        border-radius: 6px;
+        border: 1px solid #5a4a38;
+        background: #2a2018;
+        cursor: pointer;
+      }
+      .ab.sel {
+        border-color: var(--gold);
+        background: #3a2e18;
+      }
+      .ab.off {
+        opacity: 0.45;
+        cursor: default;
+      }
+      .ab b {
+        font-size: 13px;
+      }
+      .help {
+        color: var(--dim);
+      }
+      #overlay {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.45);
+        pointer-events: auto;
+      }
+      #overlay .box {
+        background: var(--panel);
+        border: 2px solid var(--gold);
+        border-radius: 12px;
+        padding: 20px 30px;
+        text-align: center;
+      }
+      #overlay h1 {
+        margin: 0 0 8px;
+      }
+      .pop {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        font-size: 22px;
+        text-shadow:
+          0 2px 4px #000,
+          0 0 3px #000;
+        pointer-events: none;
+        animation: pop 1.1s ease-out forwards;
+      }
+      @keyframes pop {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -30%) scale(0.6);
+        }
+        15% {
+          opacity: 1;
+          transform: translate(-50%, -60%) scale(1.15);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -160%) scale(1);
+        }
+      }
+      /* bottom bar layout: unit panel | hand | end turn + preview */
+      #bottom {
+        align-items: flex-end;
+        gap: 12px;
+        pointer-events: none;
+      }
+      #bottom .panel {
+        position: static;
+      }
+      #unitpanel {
+        width: 250px;
+        max-height: 300px;
+        overflow: hidden;
+      }
+      #center {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      #energy {
+        width: 62px;
+        height: 62px;
+        font-size: 22px;
+        margin: 0 0 8px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+      }
+      .card .ctext {
+        flex: 1;
+        overflow: hidden;
+      }
+      .card .why {
+        position: static;
+        margin-top: 2px;
+      }
+      #right {
+        width: 270px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      #end {
+        margin: 0;
+        padding: 10px;
+      }
+      #preview {
+        width: auto;
+        max-height: 330px;
+      }
+      .card {
+        width: 116px;
+        height: 152px;
+      }
+      .ctext {
+        font-size: 11px;
+      }
+      .lanecap {
+        font-size: 10px;
+        color: var(--dim);
+        text-align: center;
+        margin: -3px 0 4px;
+      }
+      .ab {
+        margin-top: 4px;
+        padding: 3px 6px;
+      }
+      .ab .lane {
+        display: inline-flex;
+        margin: 0 0 0 6px;
+        vertical-align: -1px;
+      }
+      #legend {
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      #left {
+        position: fixed;
+        left: 10px;
+        top: 48px;
+        width: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      #left .panel,
+      #right .panel {
+        position: static;
+        width: auto;
+      }
+      #right {
+        position: fixed;
+        right: 10px;
+        top: 48px;
+        width: 270px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      #preview {
+        max-height: 330px;
+        overflow-y: auto;
+      }
+      .prio {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin-top: 4px;
+        padding: 4px 7px;
+        font-size: 12px;
+      }
+      .prio.on {
+        border-color: var(--gold);
+        background: #4a3c1c;
+      }
+      .prio b {
+        font-size: 13px;
+      }
+      #controls {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      #controls button {
+        padding: 3px 7px;
+        font-size: 12px;
+      }
+      #controls button.on {
+        border-color: var(--gold);
+        background: #4a3c1c;
+      }
+      #actions {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 170px;
+        margin-bottom: 6px;
+      }
+      #actions #end {
+        margin: 0;
+      }
+      .ev {
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 0 3px;
+      }
+      .ev:hover,
+      .ev.on {
+        background: #4a3c2c;
+      }
+      .ev.head {
+        color: var(--gold);
+        font-weight: bold;
+        cursor: default;
+      }
+      .ev.ally {
+        color: #b8e0ff;
+      }
+      .ev.foe {
+        color: #ffb8a8;
+      }
+      .ev.hz {
+        color: var(--fire);
+      }
+      .chip {
+        display: inline-block;
+        margin: 1px 2px 0;
+        padding: 0 5px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: bold;
+        background: rgba(60, 14, 10, 0.92);
+        border: 1px solid #c8402e;
+        color: #ffe0d0;
+      }
+      .chip.plan {
+        background: rgba(14, 30, 60, 0.92);
+        border-color: #4a8ad8;
+        color: #d8e8ff;
+      }
+      .chip.inc {
+        background: var(--red);
+        border-color: #ff8a7a;
+        color: #fff;
+      }
+      .detail {
+        max-width: 230px;
+        white-space: normal;
+        font-size: 11px;
+        margin-top: 2px;
+        padding: 3px 6px;
+        border-radius: 5px;
+        background: rgba(20, 16, 12, 0.92);
+        border: 1px solid var(--edge);
+      }
+      .clabel {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+      .card .cat {
+        font-size: 10px;
+        color: var(--dim);
+        text-align: center;
+        margin: -2px 0 3px;
+      }
+      .card.cat-damage {
+        border-color: #b86a4a;
+      }
+      .card.cat-push {
+        border-color: #c8a040;
+      }
+      .card.cat-move {
+        border-color: #6a9ac8;
+      }
+      .card.cat-ground {
+        border-color: #6aa84a;
+      }
+      .card.cat-defend {
+        border-color: #6ac8e8;
+      }
+      .card.cat-summon {
+        border-color: #a87ac8;
+      }
+      #cellinfo {
+        min-height: 16px;
+      }
+      #source {
+        font-size: 11px;
+        color: var(--dim);
+      }
+      .upg {
+        display: block;
+        margin: 6px auto;
+        min-width: 280px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="view"></div>
+    <div class="layer" id="cellLabels"></div>
+    <div class="layer" id="labels"></div>
+    <div class="layer" id="pops"></div>
+    <div id="top">
+      <div id="banner"></div>
+      <div id="sub"></div>
+    </div>
+    <div id="fightbar" class="ui">
+      <select id="fight"></select>
+      <button id="restart">Restart</button>
+    </div>
+    <div id="left" class="ui">
+      <div id="prio" class="panel"></div>
+      <div id="unitpanel" class="panel"></div>
+    </div>
+    <div id="right" class="ui">
+      <div id="preview" class="panel"></div>
+      <div id="legend" class="panel">
+        <div>
+          <span class="sw" style="background: var(--red)"></span>red hex: an enemy attack lands here
+        </div>
+        <div>
+          <span class="sw" style="background: #8fd0ff"></span>blue arrow: an ally's automatic move
+        </div>
+        <div>
+          <span class="sw" style="background: var(--gold)"></span>gold arrow: an ally's attack
+        </div>
+        <div>
+          <span class="sw" style="background: var(--fire)"></span>fire 2 (blaze 4) on entry and at
+          interval end
+        </div>
+        <div>
+          <span class="sw" style="background: var(--oil)"></span>oil: fire makes a blaze; pushed
+          units slide
+        </div>
+        <div>
+          <span class="sw" style="background: var(--poison)"></span>poison 1 on entry and at
+          interval end
+        </div>
+        <div>
+          <span class="sw" style="background: var(--blue)"></span>ward: each hit there deals 2 less
+        </div>
+      </div>
+    </div>
+    <div id="bottom">
+      <div id="center" class="ui">
+        <div id="energy"></div>
+        <div id="hand"></div>
+      </div>
+      <div id="actions" class="ui">
+        <button id="end">Start fight</button>
+        <button id="undo">Undo</button>
+        <div id="controls">
+          <button id="pause" title="pause playback (space)">Pause</button>
+          <button id="step" title="play one action (S)">Step</button>
+          <button data-speed="0.5">0.5x</button>
+          <button data-speed="1">1x</button>
+          <button data-speed="2">2x</button>
+          <button id="auto" title="commit automatically while no card is worth playing">
+            Auto
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="overlay">
+      <div class="box">
+        <h1 id="otitle"></h1>
+        <div id="otext"></div>
+        <div id="obuttons"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/view/main.ts"></script>
+  </body>
+</html>
