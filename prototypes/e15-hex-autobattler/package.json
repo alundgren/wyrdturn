@@ -1,0 +1,22 @@
+{
+  "name": "e15-hex-autobattler",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev --port 5195",
+    "build": "vp build",
+    "test": "vp test run",
+    "metrics": "node scripts/metrics.ts",
+    "shots": "vp build && node scripts/shots.ts"
+  },
+  "dependencies": {
+    "three": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/three": "catalog:",
+    "playwright-core": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}
