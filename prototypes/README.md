@@ -30,6 +30,7 @@ Tile size 2 m, wall height 3 m, eye height 1.6 m.
 | e12-asset-gate                 | GLB checker, simplify and bake for generated models, picture sheets    |
 | e13-board                      | combat on a tactics board made from the room the fight starts in       |
 | e14-lanes                      | Darkest Dungeon style side-view lane combat                            |
+| e15-hex-autobattler            | hex autobattler: the squad acts on its own, you play cards in pauses   |
 
 ## Headless checks
 
