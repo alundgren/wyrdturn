@@ -79,6 +79,8 @@ here; details and numbers stay in the prototype's `RESULT.md`.
 - Difficulty for a person. The smart bot clears a 3-floor Descent 63-73%
   of the time, but it reads every intent perfectly.
 - The LLM proposer for the game master, behind the existing director
-  validator.
+  validator. Plan: it sees only the actions legal right now and answers
+  with steps the validator checks one by one
+  ([../research/agent-ui-and-gm.md](../research/agent-ui-and-gm.md)).
 - Sound, and the first-person weapon art (the sword is a placeholder).
 - A human-rated calibration set for the visual critic.
