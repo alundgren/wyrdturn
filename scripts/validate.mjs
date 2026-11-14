@@ -25,6 +25,11 @@ steps.push([
   e11,
   ["node", "scripts/descent-sim.mjs", "5", "smart"],
 ]);
+steps.push([
+  "e17-lanes-deck-pace: bots on every deck model (smoke)",
+  join("prototypes", "e17-lanes-deck-pace"),
+  ["node", "scripts/metrics.ts", "8", "--quick"],
+]);
 
 let failed = 0;
 for (const [name, cwd, cmd] of steps) {

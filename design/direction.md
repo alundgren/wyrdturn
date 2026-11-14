@@ -54,18 +54,19 @@ here; details and numbers stay in the prototype's `RESULT.md`.
 
 ## Prototype verdicts
 
-| Prototype                 | Question                                                            | Verdict                                                                                   |
-| ------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| e1 grid (Three.js, Godot) | Which engine?                                                       | Three.js, for headless agent checks                                                       |
-| e2 kit                    | Can scripts in Blender make clean, tiling level pieces?             | Yes                                                                                       |
-| e3 lighting               | How much mood comes from lighting?                                  | Most of it; "moody" look picked, made brighter later                                      |
-| e4 textures               | Where do textures come from?                                        | Image generation, processed to tile                                                       |
-| e8 outdoor                | Can open-air spaces work?                                           | Yes: sky, sun and moon, grass, trees, fountain                                            |
-| e9 polyfork               | What can borrowed rigged monsters teach us?                         | Procedural animation ideas; the files can't be redistributed                              |
-| e10 code monsters         | Code-built monsters vs TRELLIS?                                     | TRELLIS wins; code stays for variants                                                     |
-| e11 combat                | Is the combat loop fun and checkable?                               | Playable Descent loop with bots and generators                                            |
-| e12 asset gate            | Can generated models become game-ready without a person?            | Yes, about 3 s per model                                                                  |
-| e13 board, e14 lanes      | Which combat view? ([combat-exploration.md](combat-exploration.md)) | Lanes (e14) are promising and need tuning; the board (e13) felt messy and tedious in play |
+| Prototype                 | Question                                                            | Verdict                                                                                                     |
+| ------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| e1 grid (Three.js, Godot) | Which engine?                                                       | Three.js, for headless agent checks                                                                         |
+| e2 kit                    | Can scripts in Blender make clean, tiling level pieces?             | Yes                                                                                                         |
+| e3 lighting               | How much mood comes from lighting?                                  | Most of it; "moody" look picked, made brighter later                                                        |
+| e4 textures               | Where do textures come from?                                        | Image generation, processed to tile                                                                         |
+| e8 outdoor                | Can open-air spaces work?                                           | Yes: sky, sun and moon, grass, trees, fountain                                                              |
+| e9 polyfork               | What can borrowed rigged monsters teach us?                         | Procedural animation ideas; the files can't be redistributed                                                |
+| e10 code monsters         | Code-built monsters vs TRELLIS?                                     | TRELLIS wins; code stays for variants                                                                       |
+| e11 combat                | Is the combat loop fun and checkable?                               | Playable Descent loop with bots and generators                                                              |
+| e12 asset gate            | Can generated models become game-ready without a person?            | Yes, about 3 s per model                                                                                    |
+| e13 board, e14 lanes      | Which combat view? ([combat-exploration.md](combat-exploration.md)) | Lanes (e14) are promising and need tuning; the board (e13) felt messy and tedious in play                   |
+| e17 lanes deck and pace   | Should pet and summons draw cards, and can turns feel faster?       | Not it in play: turn-by-turn card play is out; next is a short autobattler with choices made up front (e18) |
 
 ## Open questions
 
