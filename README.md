@@ -14,7 +14,7 @@ prototypes, research and design decisions.
 - `prototypes/`: experiments, one folder each with a `RESULT.md`.
   `e11-combat` is the playable slice.
 - `research/`: research reports (prior art, combat and progression,
-  generation and self-checks)
+  generation and self-checks, agent-readable UI)
 - `design/`: current decisions; start at [design/direction.md](design/direction.md)
 
 ## Play the slice
