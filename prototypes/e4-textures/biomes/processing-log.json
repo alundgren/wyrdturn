@@ -3,280 +3,176 @@
     "raw_edge_MAE_255": 13.11669921875,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 119.16051600227355,
-    "basecolor_luminance_percentiles_255": [
-      68.937,
-      122.36619999999999,
-      152.588
-    ]
+    "basecolor_luminance_percentiles_255": [68.937, 122.36619999999999, 152.588]
   },
   "crypt/floor": {
     "raw_edge_MAE_255": 9.158203125,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 119.30668459453581,
-    "basecolor_luminance_percentiles_255": [
-      72.7834,
-      122.64699999999999,
-      147.0092
-    ]
+    "basecolor_luminance_percentiles_255": [72.7834, 122.64699999999999, 147.0092]
   },
   "forge/wall": {
     "raw_edge_MAE_255": 11.19580078125,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 110.881278490448,
-    "basecolor_luminance_percentiles_255": [
-      50.4932,
-      114.3931,
-      155.616
-    ]
+    "basecolor_luminance_percentiles_255": [50.4932, 114.3931, 155.616]
   },
   "forge/floor": {
     "raw_edge_MAE_255": 6.593912760416667,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 111.47645452404021,
-    "basecolor_luminance_percentiles_255": [
-      61.9736,
-      113.8066,
-      144.99419999999998
-    ]
+    "basecolor_luminance_percentiles_255": [61.9736, 113.8066, 144.99419999999998]
   },
   "moss/wall": {
     "raw_edge_MAE_255": 7.47607421875,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 111.49403691997529,
-    "basecolor_luminance_percentiles_255": [
-      63.14679999999999,
-      111.9182,
-      157.7096
-    ]
+    "basecolor_luminance_percentiles_255": [63.14679999999999, 111.9182, 157.7096]
   },
   "moss/floor": {
     "raw_edge_MAE_255": 8.465983072916666,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 111.3283073246002,
-    "basecolor_luminance_percentiles_255": [
-      64.9458,
-      111.5064,
-      157.6908
-    ]
+    "basecolor_luminance_percentiles_255": [64.9458, 111.5064, 157.6908]
   },
   "bone/wall": {
     "raw_edge_MAE_255": 12.222819010416664,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 109.55809639263153,
-    "basecolor_luminance_percentiles_255": [
-      43.5546,
-      108.9776,
-      176.79659999999998
-    ]
+    "basecolor_luminance_percentiles_255": [43.5546, 108.9776, 176.79659999999998]
   },
   "bone/floor": {
     "raw_edge_MAE_255": 6.94775390625,
     "maps": {
       "basecolor": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "normal": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       },
       "roughness": {
-        "size": [
-          1024,
-          1024
-        ],
+        "size": [1024, 1024],
         "opposite_edge_MAE_255": 0.0,
         "opposite_edge_max_255": 0.0
       }
     },
     "basecolor_luminance_mean_255": 95.6761102575302,
-    "basecolor_luminance_percentiles_255": [
-      72.9402,
-      95.5528,
-      115.958
-    ]
+    "basecolor_luminance_percentiles_255": [72.9402, 95.5528, 115.958]
   }
 }

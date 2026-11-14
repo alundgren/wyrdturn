@@ -9,8 +9,9 @@ roles, a reward after each room and a tiny meta unlock.
 
 ```
 cd prototypes/e11-combat
-npm run dev
+vp dev
 ```
+
 Open the URL. 1/2 pick a start, W/A/S/D move (1 turn in combat), Q/E
 turn (free), 1-4 skills, Space wait, G tuning panel. Walk east into the
 rooms. Meta progress is saved in the browser (`ember-scout-meta-v1`).
@@ -31,14 +32,15 @@ rooms. Meta progress is saved in the browser (`ember-scout-meta-v1`).
 
 ## Agent self-checks
 
-| Check | Command | What it catches |
-| --- | --- | --- |
-| Rules tests | `npx vitest run` | 11 acceptance scenarios from the research (wait = one enemy phase, free turning, dodging a locked attack, cooldowns, Burn/Chill timing, unique occupancy, meta unlock) |
-| Balance sim | `node scripts/sim.mjs 200 smart 2 4` and `... 1000 naive` | 2-ply lookahead bot and a naive bot play seeded runs; win rate, HP left, where runs end, stalemates |
-| Playthrough screenshots | `npm run build && node scripts/shots-game.mjs` | Scripted run in headless Chromium: start, room 1, attack intent, fight, reward, room 2; contact sheet `shots/game-sheet.png`, page errors in `shots/game-check.json` |
+| Check                   | Command                                                   | What it catches                                                                                                                                                        |
+| ----------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Rules tests             | `vp test`                                                 | 11 acceptance scenarios from the research (wait = one enemy phase, free turning, dodging a locked attack, cooldowns, Burn/Chill timing, unique occupancy, meta unlock) |
+| Balance sim             | `node scripts/sim.mjs 200 smart 2 4` and `... 1000 naive` | 2-ply lookahead bot and a naive bot play seeded runs; win rate, HP left, where runs end, stalemates                                                                    |
+| Playthrough screenshots | `vp build && node scripts/shots-game.mjs`                 | Scripted run in headless Chromium: start, room 1, attack intent, fight, reward, room 2; contact sheet `shots/game-sheet.png`, page errors in `shots/game-check.json`   |
 
 The sim found two real rule bugs on its first runs:
-1. Enemies stepped toward where the hero *was*; a hero walking along a
+
+1. Enemies stepped toward where the hero _was_; a hero walking along a
    wall was trailed diagonally forever. Moves are now announced as
    "Moves" but planned at execution time toward the hero's current tile.
 2. Archers only checked row/column alignment, not line of sight, and
@@ -50,10 +52,10 @@ so there is now a red banner + pulsing screen edge.
 
 ## Balance today (2026-11-14, numbers are a starting point)
 
-| Bot | Ember Scout | Frost Scout |
-| --- | --- | --- |
-| Smart (2-ply) | 100% wins, ~20/30 HP left, 19 turns | 46% wins, ~6 HP left; rest stalemate at low HP vs archer |
-| Naive (hit what is in front) | 0% wins, always dies in room 4 | 0%, dies in rooms 3-4 |
+| Bot                          | Ember Scout                         | Frost Scout                                              |
+| ---------------------------- | ----------------------------------- | -------------------------------------------------------- |
+| Smart (2-ply)                | 100% wins, ~20/30 HP left, 19 turns | 46% wins, ~6 HP left; rest stalemate at low HP vs archer |
+| Naive (hit what is in front) | 0% wins, always dies in room 4      | 0%, dies in rooms 3-4                                    |
 
 Reading: good play wins comfortably with Ember, Frost is much harder
 (no ranged damage-over-time). Rooms 3-4 (Brute) punish players who don't
@@ -74,7 +76,7 @@ deterministic (only rewards use the seed).
 
 Seeded generator producing the same data as the hand-made slice (map
 text + rooms with enemies), so rules, game and sim work unchanged.
-Play one: `npm run dev`, then open `/?gen=7` (any number).
+Play one: `vp dev`, then open `/?gen=7` (any number).
 
 - Rooms placed with 2-tile gaps, connected by a spanning tree + 1 loop,
   L-shaped corridors with single-tile doors. Start = leaf room, end =
@@ -88,17 +90,17 @@ Play one: `npm run dev`, then open `/?gen=7` (any number).
 - 1000 seeds: 0 failures, 9.5 attempts on average (max 83).
 - One torch per combat room plus hashed extras; shadows on the first 6.
 
-| Check | Command |
-| --- | --- |
-| Generator over many seeds + bot difficulty per seed | `GEN=1 PER_SEED=1 node scripts/sim.mjs 40 smart 2 4` |
-| Screenshot each combat room of given seeds | `npm run build && node scripts/shots-gen.mjs 1 2 3` -> `shots/gen-sheet.png`, `shots/gen-report.json` (ASCII + checks) |
+| Check                                               | Command                                                                                                           |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Generator over many seeds + bot difficulty per seed | `GEN=1 PER_SEED=1 node scripts/sim.mjs 40 smart 2 4`                                                              |
+| Screenshot each combat room of given seeds          | `vp build && node scripts/shots-gen.mjs 1 2 3` -> `shots/gen-sheet.png`, `shots/gen-report.json` (ASCII + checks) |
 
 Bot results on generated levels (seeds 1-40 smart, 1-200 naive):
 
-| Bot | Ember | Frost |
-| --- | --- | --- |
+| Bot   | Ember                  | Frost                |
+| ----- | ---------------------- | -------------------- |
 | Smart | 77.5% wins, ~8 HP left | 35% wins, ~4 HP left |
-| Naive | 0%, dies in rooms 2-4 | 0% |
+| Naive | 0%, dies in rooms 2-4  | 0%                   |
 
 Generated levels give a better difficulty curve than the hand-made
 slice (where the smart bot always won with Ember).
@@ -119,6 +121,7 @@ baseline kit and with "no 4th skill". `node scripts/skilllab.mjs 16 16`
 (~18 s). Output also in `shots/skilllab.json`.
 
 Three passes, each driven by the lab's flags:
+
 1. Arc skills too strong, 3 "useless" skills (worse Strike/Guard), fire
    "wards" that were just Block with a fire name.
 2. Arc price 1.6 -> 2.0, elemental riders required, redundancy rules:
@@ -151,6 +154,7 @@ draw-call / triangle budget (450 calls, 400k tris, first guesses).
 
 The first headless run found generated levels at up to **1041 draw
 calls** per view (every kit piece was its own mesh). Fixes:
+
 - merge static kit meshes per material per 12 m chunk (`?nobatch` to
   compare), camera far plane 30 m (fog hides it anyway);
 - result: slice 265 -> 79 calls, generated seed 2: 1041 -> ~207 calls,
@@ -192,10 +196,10 @@ without touching the engine.
 
 `node scripts/director-eval.mjs 30` (same 30 generated levels):
 
-| Bot | Director off | Director on |
-| --- | --- | --- |
+| Bot   | Director off          | Director on           |
+| ----- | --------------------- | --------------------- |
 | Smart | 70% wins, 5.9 HP left | 77% wins, 7.1 HP left |
-| Naive | 0% | 0% |
+| Naive | 0%                    | 0%                    |
 
 Bad proposals (unknown "dragon", 4 wardens, wrong room, unknown command):
 24/24 rejected, game continued with the authored encounter, no crash.
@@ -268,9 +272,10 @@ relic carry over (sessionStorage, the page reloads with the next
 one more room. Meta tracks best floor.
 
 Checks:
+
 - `node scripts/descent-sim.mjs 40 smart`: smart bot clears all 3
   floors in 63% (Ember) / 73% (Frost); HP after floor 1 ~11-12.
-- `npm run build && node scripts/shots-descent.mjs`: headless browser
+- `vp build && node scripts/shots-descent.mjs`: headless browser
   starts a Descent, descends twice, asserts HP/upgrade/relic carried,
   screenshots each floor. All ok, no page errors.
 

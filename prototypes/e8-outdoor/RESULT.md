@@ -58,4 +58,4 @@ ignored.
 - Verdict: the dead tree and shrub look like a real game; the oak reads
   as an umbrella-shaped canopy (OK at distance). Grass blades + painted
   grass texture work together.
-Shots: `shots/moody-day-courtyard.png`, `shots/moody-dusk-trees.png`.
+  Shots: `shots/moody-day-courtyard.png`, `shots/moody-dusk-trees.png`.

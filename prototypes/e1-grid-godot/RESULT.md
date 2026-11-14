@@ -11,14 +11,14 @@ GDScript, Forward+ renderer (`project.godot`).
 
 ## Files
 
-| File | What it does |
-| --- | --- |
-| `project.godot`, `main.tscn` | Project and a one-node main scene. Everything else is built in code. |
-| `maps/test01.txt` | Copy of `../maps/test01.txt`. |
-| `scripts/dungeon_map.gd` | Pure map parser: tiles, start, `is_walkable`. |
-| `scripts/grid_mover.gd` | Pure movement logic: position, facing, `can_move`, `apply`, one-slot input buffer (`submit` / `finish_action`). No nodes. |
-| `scripts/main.gd` | Visuals: grey boxes, camera, torch light, key input, tweens. |
-| `tests/run_tests.gd` | Headless tests. |
+| File                         | What it does                                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `project.godot`, `main.tscn` | Project and a one-node main scene. Everything else is built in code.                                                      |
+| `maps/test01.txt`            | Copy of `../maps/test01.txt`.                                                                                             |
+| `scripts/dungeon_map.gd`     | Pure map parser: tiles, start, `is_walkable`.                                                                             |
+| `scripts/grid_mover.gd`      | Pure movement logic: position, facing, `can_move`, `apply`, one-slot input buffer (`submit` / `finish_action`). No nodes. |
+| `scripts/main.gd`            | Visuals: grey boxes, camera, torch light, key input, tweens.                                                              |
+| `tests/run_tests.gd`         | Headless tests.                                                                                                           |
 
 Why the map is copied in: Godot can only see files under the project folder
 through `res://`. Reading `../maps/test01.txt` would need an absolute OS path

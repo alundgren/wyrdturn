@@ -3,19 +3,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "vitest run",
-    "shots": "vite build && node scripts/shots.mjs"
+    "dev": "vp dev",
+    "build": "vp build",
+    "test": "vp test run",
+    "shots": "vp build && node scripts/shots.mjs"
   },
   "dependencies": {
-    "three": "0.187.0"
+    "three": "catalog:"
   },
   "devDependencies": {
-    "vite": "8.3.8",
-    "vitest": "5.1.0",
-    "playwright-core": "1.65.0",
     "pixelmatch": "^8.0.0",
-    "pngjs": "^7.0.0"
+    "playwright-core": "catalog:",
+    "pngjs": "^7.0.0",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   }
 }

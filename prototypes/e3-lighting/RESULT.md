@@ -5,12 +5,12 @@ since E4's real textures are not done yet. Same map and movement as E1.
 
 ## Looks (`?look=` in the URL)
 
-| Look | What it adds |
-| --- | --- |
-| base | E1 as is: one strong light on the camera |
-| lit | tone mapping (ACES), exp fog, dim cold fill light, weak lantern, 6 flickering wall torches |
-| moody | lit + torch shadows, ambient occlusion (GTAO), bloom, colour grade, vignette, grain |
-| painted | moody + Kuwahara filter (smooths detail into brush-like patches) |
+| Look    | What it adds                                                                               |
+| ------- | ------------------------------------------------------------------------------------------ |
+| base    | E1 as is: one strong light on the camera                                                   |
+| lit     | tone mapping (ACES), exp fog, dim cold fill light, weak lantern, 6 flickering wall torches |
+| moody   | lit + torch shadows, ambient occlusion (GTAO), bloom, colour grade, vignette, grain        |
+| painted | moody + Kuwahara filter (smooths detail into brush-like patches)                           |
 
 Contact sheet: `shots/contact-sheet.png` (rows = looks, columns = spots).
 
@@ -39,7 +39,7 @@ Contact sheet: `shots/contact-sheet.png` (rows = looks, columns = spots).
 
 ```
 cd prototypes/e3-lighting
-npm run dev
+vp dev
 ```
 
 Then open the URL with `?look=moody` (or base, lit, painted). The top

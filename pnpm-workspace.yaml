@@ -1,0 +1,16 @@
+packages:
+  - prototypes/*
+
+catalog:
+  three: "0.187.0"
+  "vite-plus": "1.6.0"
+  vite: "npm:@voidzero-dev/vite-plus-core@1.6.0"
+  "playwright-core": "1.65.0"
+
+overrides:
+  vite: "catalog:"
+
+# vite is Vite+'s core under its own version number; vitest accepts it.
+peerDependencyRules:
+  allowedVersions:
+    vite: "*"

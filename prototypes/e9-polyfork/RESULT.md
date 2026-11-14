@@ -4,11 +4,11 @@ Downloaded (anonymous CDN, no key) into `download/` (gitignored; the
 licence forbids redistributing the files): GLB, `.mjs` source and API
 JSON for:
 
-| Asset | Tris | Clips | Notes |
-| --- | --- | --- | --- |
-| flesh-eater-base "Wide-Jawed Ghoul" | 3,194 | Walk, Idle, Run | quadruped, also has procedural IK legs (`/cdn/walk.mjs`) |
-| bone-warrior-base "Skull-Helmed Bone Warrior" | 4,996 | Idle, Walk, Run | 22-bone Mixamo skeleton |
-| shambling-ghoul-256f2f "Shambling Ghoul" | 3,697 | Idle, Walk, Run | 31 bones (with face), part of a `dungeon-crypt` kit |
+| Asset                                         | Tris  | Clips           | Notes                                                    |
+| --------------------------------------------- | ----- | --------------- | -------------------------------------------------------- |
+| flesh-eater-base "Wide-Jawed Ghoul"           | 3,194 | Walk, Idle, Run | quadruped, also has procedural IK legs (`/cdn/walk.mjs`) |
+| bone-warrior-base "Skull-Helmed Bone Warrior" | 4,996 | Idle, Walk, Run | 22-bone Mixamo skeleton                                  |
+| shambling-ghoul-256f2f "Shambling Ghoul"      | 3,697 | Idle, Walk, Run | 31 bones (with face), part of a `dungeon-crypt` kit      |
 
 Shown in the E8 courtyard (`public/polyfork/`, also gitignored). Keys:
 **M** cycles clips, **P** toggles a painted-texture overlay test.

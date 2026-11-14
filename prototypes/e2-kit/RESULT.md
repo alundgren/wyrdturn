@@ -6,17 +6,18 @@ E3, "moody" look) now builds the level from kit pieces instead of boxes.
 
 ## Kit (`out/kit.glb`, 149 KB, built by `blender/build_kit.py`)
 
-| Piece | Tris | Used for |
-| --- | --- | --- |
-| kit_wall | 764 | wall face on a tile edge, with plinth and cornice, slightly uneven face |
-| kit_corner | 324 | column where walls meet (hides corner seams) |
-| kit_floor / kit_ceiling | 12 each | one tile |
-| kit_beam | 108 | wooden ceiling beam, every other tile |
-| kit_doorway | 88 | stone partition with round-arched opening (boolean cut) |
-| kit_doorframe | 324 | wooden posts and lintel in the opening |
-| kit_sconce | 492 | iron torch holder; flame and light added in code |
+| Piece                   | Tris    | Used for                                                                |
+| ----------------------- | ------- | ----------------------------------------------------------------------- |
+| kit_wall                | 764     | wall face on a tile edge, with plinth and cornice, slightly uneven face |
+| kit_corner              | 324     | column where walls meet (hides corner seams)                            |
+| kit_floor / kit_ceiling | 12 each | one tile                                                                |
+| kit_beam                | 108     | wooden ceiling beam, every other tile                                   |
+| kit_doorway             | 88      | stone partition with round-arched opening (boolean cut)                 |
+| kit_doorframe           | 324     | wooden posts and lintel in the opening                                  |
+| kit_sconce              | 492     | iron torch holder; flame and light added in code                        |
 
 Rebuild:
+
 ```
 /Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup \
   --python blender/build_kit.py -- "$PWD/out/kit.glb" && cp out/kit.glb public/
@@ -42,6 +43,6 @@ Rebuild:
 
 ## Screenshots
 
-`shots/` (`LOOKS=moody npm run shots`). Real-GPU fps not measured on this
+`shots/` (`LOOKS=moody vp run shots`). Real-GPU fps not measured on this
 version yet; piece count went up (~300 meshes, no instancing yet). If it
 drops, merge static pieces or use InstancedMesh per piece.
