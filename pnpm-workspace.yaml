@@ -4,6 +4,7 @@ packages:
 catalog:
   three: "0.187.0"
   "@types/three": "0.187.0"
+  "@types/node": "26.6.6"
   "vite-plus": "1.6.0"
   vite: "npm:@voidzero-dev/vite-plus-core@1.6.0"
   "playwright-core": "1.65.0"
