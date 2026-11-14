@@ -30,6 +30,7 @@ Tile size 2 m, wall height 3 m, eye height 1.6 m.
 | e12-asset-gate                 | GLB checker, simplify and bake for generated models, picture sheets    |
 | e13-board                      | combat on a tactics board made from the room the fight starts in       |
 | e14-lanes                      | Darkest Dungeon style side-view lane combat                            |
+| e17-lanes-deck-pace            | e14 lanes with party deck models and a faster pace (URL switches)      |
 
 ## Headless checks
 
@@ -54,6 +55,9 @@ window. Run them from the prototype's folder.
 | Monster sheet                        | e10   | `vp build && node scripts/shots.mjs`                                     |
 | Asset gate                           | e12   | `vp build && node scripts/gate.mjs --profile prop file.glb`              |
 | TRELLIS prep (simplify, bake, gate)  | e12   | `sh scripts/prep-all.sh` (raw files in `local/trellis-raw`)              |
+| Deck and pace metrics                | e17   | `node scripts/metrics.ts 200`                                            |
+| Lane shots, mouse and timing checks  | e17   | `vp build && node scripts/shots.ts`                                      |
 
 The playwright scripts look for the headless shell in the macOS Playwright
-cache (`~/Library/Caches/ms-playwright`).
+cache (`~/Library/Caches/ms-playwright`); e17's also looks in the Linux cache
+(`~/.cache/ms-playwright`) and `PLAYWRIGHT_BROWSERS_PATH`.
