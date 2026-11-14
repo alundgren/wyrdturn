@@ -30,6 +30,7 @@ Tile size 2 m, wall height 3 m, eye height 1.6 m.
 | e12-asset-gate                 | GLB checker, simplify and bake for generated models, picture sheets    |
 | e13-board                      | combat on a tactics board made from the room the fight starts in       |
 | e14-lanes                      | Darkest Dungeon style side-view lane combat                            |
+| e16-depth-lanes                | first-person combat in 3 lanes × 5 rows ahead of the party             |
 
 ## Headless checks
 
@@ -51,9 +52,13 @@ window. Run them from the prototype's folder.
 | Generated level shots                | e11   | `node scripts/shots-gen.mjs 1 2 3`                                       |
 | Draw-call budget                     | e11   | `node scripts/bench.mjs [seed]`                                          |
 | Frame time on the real GPU           | e11   | `GPU=1 node scripts/bench.mjs [seed]` (add `UNCAPPED=1` for headroom)    |
+| Rules tests                          | e16   | `vp test`                                                                |
+| Bots, metrics and gates              | e16   | `node scripts/metrics.ts 300` (`--write` updates RESULT.md)              |
+| Fight screenshots + mouse check      | e16   | `vp build && node scripts/shots.ts`                                      |
 | Monster sheet                        | e10   | `vp build && node scripts/shots.mjs`                                     |
 | Asset gate                           | e12   | `vp build && node scripts/gate.mjs --profile prop file.glb`              |
 | TRELLIS prep (simplify, bake, gate)  | e12   | `sh scripts/prep-all.sh` (raw files in `local/trellis-raw`)              |
 
 The playwright scripts look for the headless shell in the macOS Playwright
-cache (`~/Library/Caches/ms-playwright`).
+cache (`~/Library/Caches/ms-playwright`). e16 also looks in the Linux cache
+(`~/.cache/ms-playwright`).
