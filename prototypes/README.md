@@ -30,6 +30,7 @@ Tile size 2 m, wall height 3 m, eye height 1.6 m.
 | e12-asset-gate                 | GLB checker, simplify and bake for generated models, picture sheets    |
 | e13-board                      | combat on a tactics board made from the room the fight starts in       |
 | e14-lanes                      | Darkest Dungeon style side-view lane combat                            |
+| e18-upfront-autobattler        | side-view autobattler: choose before the fight, then watch it play     |
 
 ## Headless checks
 
@@ -54,6 +55,8 @@ window. Run them from the prototype's folder.
 | Monster sheet                        | e10   | `vp build && node scripts/shots.mjs`                                     |
 | Asset gate                           | e12   | `vp build && node scripts/gate.mjs --profile prop file.glb`              |
 | TRELLIS prep (simplify, bake, gate)  | e12   | `sh scripts/prep-all.sh` (raw files in `local/trellis-raw`)              |
+| Choice metrics and gates             | e18   | `node scripts/metrics.ts 160 --off 60` (`--quick` for a fast look)       |
+| Screenshots and browser checks       | e18   | `vp build && node scripts/shots.ts`                                      |
 
 The playwright scripts look for the headless shell in the macOS Playwright
 cache (`~/Library/Caches/ms-playwright`).

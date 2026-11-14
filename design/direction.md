@@ -66,6 +66,7 @@ here; details and numbers stay in the prototype's `RESULT.md`.
 | e11 combat                | Is the combat loop fun and checkable?                               | Playable Descent loop with bots and generators                                            |
 | e12 asset gate            | Can generated models become game-ready without a person?            | Yes, about 3 s per model                                                                  |
 | e13 board, e14 lanes      | Which combat view? ([combat-exploration.md](combat-exploration.md)) | Lanes (e14) are promising and need tuning; the board (e13) felt messy and tedious in play |
+| e18 up-front autobattler  | Can choices made before an automatic fight matter?                  | Not played yet. Bots: yes; see its RESULT.md                                              |
 
 ## Open questions
 
