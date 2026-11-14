@@ -1,0 +1,86 @@
+{
+  "a/wall/trial-1": {
+    "raw_edge_MAE_255": 6.111979166666666
+  },
+  "a/wall/trial-2": {
+    "raw_edge_MAE_255": 7.81298828125
+  },
+  "a/wall/trial-3": {
+    "raw_edge_MAE_255": 6.923177083333334
+  },
+  "a/wall": {
+    "before_edge_MAE_255": 0.000651041666666669,
+    "after_edge_MAE_255": 0.0
+  },
+  "a/floor/trial-1": {
+    "raw_edge_MAE_255": 6.706380208333334
+  },
+  "a/floor/trial-2": {
+    "raw_edge_MAE_255": 6.608723958333334
+  },
+  "a/floor/trial-3": {
+    "raw_edge_MAE_255": 4.69287109375
+  },
+  "a/floor": {
+    "before_edge_MAE_255": 0.0,
+    "after_edge_MAE_255": 0.0
+  },
+  "a/wood/trial-1": {
+    "raw_edge_MAE_255": 8.271647135416666
+  },
+  "a/wood/trial-2": {
+    "raw_edge_MAE_255": 8.358235677083332
+  },
+  "a/wood/trial-3": {
+    "raw_edge_MAE_255": 5.846028645833334
+  },
+  "a/wood": {
+    "before_edge_MAE_255": 0.00032552083333333337,
+    "after_edge_MAE_255": 0.0
+  },
+  "a/iron/trial-1": {
+    "raw_edge_MAE_255": 5.6337890625
+  },
+  "a/iron/trial-2": {
+    "raw_edge_MAE_255": 7.487141927083333
+  },
+  "a/iron/trial-3": {
+    "raw_edge_MAE_255": 5.327473958333333
+  },
+  "a/iron": {
+    "before_edge_MAE_255": 0.00016276041666666725,
+    "after_edge_MAE_255": 0.0
+  },
+  "b/wall": {
+    "before_edge_MAE_255": 4.957466669909792,
+    "after_edge_MAE_255": 1.1519648082658485e-18
+  },
+  "b/floor": {
+    "before_edge_MAE_255": 1.150808568341282,
+    "after_edge_MAE_255": 0.0
+  },
+  "b/wood": {
+    "before_edge_MAE_255": 5.735485643753977,
+    "after_edge_MAE_255": 2.188733135705112e-17
+  },
+  "b/iron": {
+    "before_edge_MAE_255": 1.3596680132725454,
+    "after_edge_MAE_255": 0.0
+  },
+  "c/wall": {
+    "before_edge_MAE_255": 11.71419270833333,
+    "after_edge_MAE_255": 1.1519648082658485e-18
+  },
+  "c/floor": {
+    "before_edge_MAE_255": 27.859375,
+    "after_edge_MAE_255": 7.165221107413577e-16
+  },
+  "c/wood": {
+    "before_edge_MAE_255": 16.011393229166664,
+    "after_edge_MAE_255": 3.3118988237643143e-16
+  },
+  "c/iron": {
+    "before_edge_MAE_255": 13.719075520833334,
+    "after_edge_MAE_255": 0.0
+  }
+}

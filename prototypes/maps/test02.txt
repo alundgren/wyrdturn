@@ -1,0 +1,14 @@
+# Outdoor test map. '#' wall  '.' indoor floor  ',' grass (open sky)  '=' flagstone path
+# 'T' tree (blocks)  'b' thorn shrub (blocks)  'F' fountain (blocks)  'D' doorway  'S' start
+##############
+#,,,,,=,,,,,,#
+#,T,,,=,,,,T,#
+#,,b,,=,,,b,,#
+#,,,==F==,,,,#
+#,,,,,=,,,,,,#
+#,T,,b=,,,,T,#
+#,,,,,=,,,,,,#
+######D#######
+#............#
+#.S..#..#....#
+##############

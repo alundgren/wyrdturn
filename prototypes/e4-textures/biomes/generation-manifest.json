@@ -1,0 +1,42 @@
+[
+  {
+    "biome": "crypt",
+    "kind": "wall",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-aeb4b6ca-5359-484f-b2a4-3d440e6aa375.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "crypt",
+    "kind": "floor",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-8eb92564-f118-4692-bc4f-2935687cee24.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "forge",
+    "kind": "wall",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-1d935a57-892f-4eb0-8c33-5982fe7f9449.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "forge",
+    "kind": "floor",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-8fdc3bc3-2868-44a0-a9d5-0d7aecf1ef00.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "moss",
+    "kind": "wall",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-af90f3b1-0f8d-42cf-93c1-0d9aadc97617.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "moss",
+    "kind": "floor",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-eba405dc-b37a-494b-ae1b-e6d285fef088.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "bone",
+    "kind": "wall",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-ef2d0446-6216-4031-b7ee-9d57b210210e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "biome": "bone",
+    "kind": "floor",
+    "output_hint": "Generated images are saved to ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8 as ~/.codex/generated_images/01a1d6f4-cb78-72d1-a2d5-6c5a77a66da8/exec-3cb1fa5d-7a24-4526-9bc0-8e1e3c357223.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

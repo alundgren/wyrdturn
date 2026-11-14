@@ -1,0 +1,32 @@
+{
+  "ghoul-skin": {
+    "raw_edge_MAE_255": 6.578125,
+    "final_edge_MAE_255": 0.0,
+    "mean_luminance": 0.5085489763805913
+  },
+  "bone": {
+    "raw_edge_MAE_255": 9.272786458333334,
+    "final_edge_MAE_255": 0.0,
+    "mean_luminance": 0.6841209817385207
+  },
+  "chitin": {
+    "raw_edge_MAE_255": 4.143717447916667,
+    "final_edge_MAE_255": 0.0,
+    "mean_luminance": 0.22652669940873693
+  },
+  "rusty-armour": {
+    "raw_edge_MAE_255": 5.901529947916666,
+    "final_edge_MAE_255": 0.0,
+    "mean_luminance": 0.3715791444643807
+  },
+  "leather-cloth": {
+    "raw_edge_MAE_255": 6.676920572916666,
+    "final_edge_MAE_255": 0.0,
+    "mean_luminance": 0.2858674407427919
+  },
+  "scales": {
+    "raw_edge_MAE_255": 5.189615885416666,
+    "final_edge_MAE_255": 0.0,
+    "mean_luminance": 0.40193734462289255
+  }
+}

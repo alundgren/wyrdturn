@@ -1,0 +1,422 @@
+{
+  "method-a/wall/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wall/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wall/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wall/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wall/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/floor/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/floor/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/floor/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/floor/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/floor/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wood/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wood/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wood/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wood/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/wood/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/iron/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/iron/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/iron/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/iron/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-a/iron/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wall/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wall/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0003255208333333333
+  },
+  "method-b/wall/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wall/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wall/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/floor/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/floor/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/floor/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/floor/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/floor/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wood/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wood/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.001953125
+  },
+  "method-b/wood/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wood/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/wood/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/iron/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/iron/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/iron/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/iron/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-b/iron/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wall/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wall/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wall/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wall/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wall/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/floor/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.021321614583333332
+  },
+  "method-c/floor/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/floor/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/floor/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/floor/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wood/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.00830078125
+  },
+  "method-c/wood/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wood/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wood/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/wood/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/iron/basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/iron/normal.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/iron/roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/iron/wet-basecolor.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  },
+  "method-c/iron/wet-roughness.png": {
+    "size": [
+      1024,
+      1024
+    ],
+    "edge_MAE_255": 0.0
+  }
+}

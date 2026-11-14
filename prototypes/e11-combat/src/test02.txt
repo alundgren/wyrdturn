@@ -1,0 +1,14 @@
+# Outdoor test map. '#' wall  '.' indoor floor  ',' grass (open sky)
+# 'T' tree (blocks)  'F' fountain (blocks)  'D' doorway  'S' start  'P' pillar
+##############
+#,,,,,,,,,,,,#
+#,T,,,,,,,,T,#
+#,,,,,,,,,,,,#
+#,,,,,F,,,,,,#
+#,,,,,,,,,,,,#
+#,T,,,,,,,T,,#
+#,,,,,,,,,,,,#
+######D#######
+#............#
+#.S..#..#....#
+##############

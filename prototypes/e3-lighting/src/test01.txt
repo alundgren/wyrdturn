@@ -1,0 +1,13 @@
+# Test map. One char per tile.
+# '#' wall   '.' floor   'D' door (open, walkable)   'S' start (floor), facing north
+# 'P' pillar (blocks, thin)   ' ' outside (treat as wall)
+##########
+#....#...#
+#.##.#.#.#
+#.#..D.#.#
+#.#.####.#
+#...#..P.#
+###.#.##.#
+#...#....#
+#.S...##.#
+##########

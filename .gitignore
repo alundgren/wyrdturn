@@ -1,0 +1,31 @@
+# Local-only files: raw generator output, notes, tools. Never committed.
+local/
+tools/
+.DS_Store
+
+# Packages and builds
+node_modules/
+dist/
+
+# Screenshots and visual-diff baselines: scripts recreate them
+shots/
+
+# Borrowed Polyfork files: licence forbids redistributing them
+prototypes/e9-polyfork/download/
+
+# Texture lab output: source images, previews and full sets stay local.
+# Games load WebP copies from their public/ folder (scripts/to-webp.sh).
+prototypes/e4-textures/method-a/
+prototypes/e4-textures/method-b/
+prototypes/e4-textures/method-c/
+prototypes/e4-textures/biomes/**/*.png
+prototypes/e4-textures/contact-sheet.png
+prototypes/e10-code-monsters/textures/**/*.png
+prototypes/e10-code-monsters/textures/contact-sheet.png
+
+# Asset gate work files (high-poly copies, ~10 MB each)
+prototypes/e12-asset-gate/prepped/work/
+
+# Blender backups and Godot cache
+*.blend1
+.godot/

@@ -1,0 +1,17 @@
+{
+  "name": "wyrdturn-prototypes",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "e1-grid-threejs",
+    "e2-kit",
+    "e3-lighting",
+    "e8-outdoor",
+    "e10-code-monsters",
+    "e11-combat",
+    "e12-asset-gate"
+  ],
+  "scripts": {
+    "check": "node scripts/check.mjs"
+  }
+}

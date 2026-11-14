@@ -1,0 +1,14 @@
+# Text files are stored and checked out with LF on every OS.
+* text=auto eol=lf
+
+# Binary assets.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.glb binary
+*.blend binary
+*.ogg binary
+*.wav binary
+*.mp3 binary
+*.zip binary
